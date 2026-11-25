@@ -1,0 +1,26 @@
+# Blender 5.2.2 LTS MTL File: 'Gun15.blend'
+# www.blender.org
+
+newmtl Material.002
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Ns /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Roughness.jpg
+map_refl /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Metallic.jpg
+map_Bump -bm 1.000000 /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Normal.png
+
+newmtl Material.003
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_BaseColor.jpg
+map_Ns /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Roughness.jpg
+map_refl /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Metallic.jpg
+map_Bump -bm 1.000000 /home/chevre/Modeling/GunTex/Poliigon_MetalPaintedMatte_7037_Normal.png

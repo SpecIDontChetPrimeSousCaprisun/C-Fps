@@ -1,0 +1,10 @@
+/home/chevre/.config/nixpkgs/overlays
+/home/chevre/.config/nixpkgs/overlays.nix
+/home/chevre/Coding/fps/.devenv/bootstrap/bootstrapLib.nix
+/home/chevre/Coding/fps/.devenv/bootstrap/default.nix
+/home/chevre/Coding/fps/.devenv/bootstrap/resolve-lock.nix
+/home/chevre/Coding/fps/.env
+/home/chevre/Coding/fps/devenv.local.nix
+/home/chevre/Coding/fps/devenv.lock
+/home/chevre/Coding/fps/devenv.nix
+/run/user/1001/devenv-749dbd3/processes/native-manager.pid
