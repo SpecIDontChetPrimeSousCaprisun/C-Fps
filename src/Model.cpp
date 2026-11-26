@@ -56,7 +56,7 @@ Model::Model(std::string path) : Node() {
 	    indices.push_back(static_cast<unsigned int>(idx.vertex_index));
 	}
 
-	Mesh(this, vertices, indices);
+	new Mesh(this, vertices, indices);
     }
 
     setParent(Window::parent);

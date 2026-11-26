@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Node.hpp"
+#include "Camera.hpp"
 
 class Window {
 public:
@@ -16,6 +17,7 @@ public:
     static int height;
     static int width;
     static Node* parent;
+    static Camera camera;
 private:
     static void frameBufferSizeCallback(GLFWwindow*, int newWidth, int newHeight);
 };
