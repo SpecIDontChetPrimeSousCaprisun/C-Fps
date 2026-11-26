@@ -53,7 +53,7 @@ Model::Model(std::string path) : Node() {
 	    }
 
 	    vertices.push_back(vert);
-	    indices.push_back(static_cast<unsigned int>(idx.vertex_index));
+	    indices.push_back(static_cast<unsigned int>(vertices.size() - 1));
 	}
 
 	new Mesh(this, vertices, indices);
