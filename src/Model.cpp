@@ -1,4 +1,5 @@
 #include <iostream>
+#include <filesystem>
 #include <tiny_obj_loader.h>
 
 #include "Model.hpp"
@@ -32,6 +33,15 @@ Model::Model(std::string path) : Node() {
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 
+	if (mesh.material_ids.empty() || mesh.material_ids[0] < 0) continue;
+
+	int matId = mesh.material_ids[0];
+        if (matId >= materials.size()) continue;
+
+	tinyobj::material_t mat = materials[matId];
+	std::filesystem::path modelDir = std::filesystem::path(path).parent_path();
+	std::string fullTexPath = (modelDir / mat.diffuse_texname).string();
+
 	for (auto idx : mesh.indices) {
 	    Vertex vert;
 
@@ -56,7 +66,8 @@ Model::Model(std::string path) : Node() {
 	    indices.push_back(static_cast<unsigned int>(vertices.size() - 1));
 	}
 
-	new Mesh(this, vertices, indices);
+	std::cout << fullTexPath << "\n";
+	new Mesh(this, vertices, indices, fullTexPath);
     }
 
     setParent(Window::parent);

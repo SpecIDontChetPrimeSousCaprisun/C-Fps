@@ -77,3 +77,21 @@ void Shader::setVec3(std::string name, glm::vec3 value) {
     glUniform3f(glGetUniformLocation(program, name.c_str()), 
 		value.x, value.y, value.z);
 }
+
+void Shader::setMaterial(std::string name, Material material) {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, material.diffuse.id);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, material.specular.id);
+
+    setInt(name + ".diffuse", 0);
+    setInt(name + ".specular", 1);
+    setFloat(name + ".shininess", material.shininess);
+}
+
+void Shader::setDirLight(std::string name, DirLight light) {
+    setVec3(name + ".position", light.position);
+    setVec3(name + ".ambient", light.ambient);
+    setVec3(name + ".diffuse", light.diffuse);
+    setVec3(name + ".specular", light.specular);
+}

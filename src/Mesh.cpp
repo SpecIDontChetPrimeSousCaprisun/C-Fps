@@ -9,7 +9,12 @@ void Mesh::init() {
     Mesh::shader = new Shader("shaders/vertex.glsl", "shaders/fragment.glsl");
 }
 
-Mesh::Mesh(Node* parent, std::vector<Vertex> vertices, std::vector<unsigned int> indices) : Node(parent), indices(indices), vertices(vertices) {
+Mesh::Mesh(
+    Node* parent,
+    std::vector<Vertex> vertices,
+    std::vector<unsigned int> indices,
+    std::string texPath
+) : Node(parent), indices(indices), vertices(vertices) {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -35,6 +40,9 @@ Mesh::Mesh(Node* parent, std::vector<Vertex> vertices, std::vector<unsigned int>
 
     glBindVertexArray(0);
 
+    material.diffuse.gen(texPath);
+    material.specular.gen(texPath);
+
     setParent(Window::parent);
 }
 
@@ -46,6 +54,9 @@ void Mesh::draw() {
     glUseProgram(shader->program);    
 
     sendMatrix();
+
+    shader->setMaterial("material", material);
+    shader->setDirLight("dirLight", Window::dirLight);
 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);

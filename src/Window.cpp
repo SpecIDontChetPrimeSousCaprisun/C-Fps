@@ -9,6 +9,7 @@ double Window::dt = 0;
 double Window::lastFrame = 0;
 Node* Window::parent = new Node();
 Camera Window::camera;
+DirLight Window::dirLight;
 
 void Window::frameBufferSizeCallback(GLFWwindow*, int newWidth, int newHeight) {
     width = newWidth;
@@ -50,6 +51,11 @@ int Window::init() {
     glEnable(GL_FRAMEBUFFER_SRGB);
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    dirLight.position = glm::vec3(-2.0f, -1.0f, -1.0f);
+    dirLight.ambient = glm::vec3(0.274509804f);
+    dirLight.diffuse = glm::vec3(0.588235294f, 0.588235294f, 0.392156863f);
+    dirLight.specular = glm::vec3(1.0f, 1.0f, 1.0f);
 
     return 0;
 }

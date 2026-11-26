@@ -3,10 +3,11 @@
 #include "Node.hpp"
 #include "Vertex.hpp"
 #include "Shader.hpp"
+#include "Material.hpp"
 
 class Mesh : Node {
 public:
-    Mesh(Node* parent, std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+    Mesh(Node* parent, std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::string texPath);
 
     static void init();
 
@@ -19,5 +20,6 @@ private:
 
     std::vector<unsigned int> indices;
     std::vector<Vertex> vertices;
+    Material material;
     unsigned int VAO, VBO, EBO;
 };
