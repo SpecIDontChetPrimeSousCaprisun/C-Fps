@@ -68,8 +68,8 @@ void Mesh::sendMatrix() {
     glm::mat4 model = glm::mat4(1.0f);
 
     glm::mat4 view = glm::lookAt(
-	Window::camera.position,
-	Window::camera.position + Window::camera.forward,
+	Window::camera->getWorldPosition(),
+	Window::camera->getWorldPosition() + Window::camera->forward,
 	glm::vec3(0.0f, 1.0f, 0.0f)
     );
 

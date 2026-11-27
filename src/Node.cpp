@@ -38,7 +38,10 @@ void Node::unparent() {
 }
 
 void Node::updateChildren() {
+    updateWorldCoordinates();
+
     for (Node* child : children) {
+	child->preUpdate();
 	child->update();
     }
 

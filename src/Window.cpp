@@ -8,7 +8,7 @@ int Window::height = 1200;
 double Window::dt = 0;
 double Window::lastFrame = 0;
 Node* Window::parent = new Node();
-Camera Window::camera;
+Camera* Window::camera;
 DirLight Window::dirLight;
 
 void Window::frameBufferSizeCallback(GLFWwindow*, int newWidth, int newHeight) {
@@ -56,6 +56,8 @@ int Window::init() {
     dirLight.ambient = glm::vec3(0.274509804f);
     dirLight.diffuse = glm::vec3(0.588235294f, 0.588235294f, 0.392156863f);
     dirLight.specular = glm::vec3(1.0f, 1.0f, 1.0f);
+    camera = new Camera();
+    camera->setParent(parent);
 
     return 0;
 }
@@ -75,7 +77,6 @@ void Window::mainLoop() {
 	glClearColor(0.0f, 0.717647059f, 0.921568627f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	camera.update();
 	parent->updateChildren();
 	parent->drawChildren();
 

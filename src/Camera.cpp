@@ -1,6 +1,11 @@
 #include "Camera.hpp"
 #include "Window.hpp"
 
+Camera::Camera() : Node() {
+    rotation.y = -90.0f;
+    position.z = 10.0f;
+}
+
 void Camera::update() {
     double xpos, ypos;
     glfwGetCursorPos(Window::window, &xpos, &ypos);
@@ -25,11 +30,13 @@ void Camera::update() {
 
     if (rotation.x > 89.0f) rotation.x = 89.0f;
     if (rotation.x < -89.0f) rotation.x = -89.0f;
-    
+
+    updateWorldCoordinates();
+    glm::vec3 worldRot = getWorldRotation();    
     glm::vec3 dir;
-    dir.x = cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
-    dir.y = sin(glm::radians(rotation.x));
-    dir.z = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
+    dir.x = cos(glm::radians(worldRot.y)) * cos(glm::radians(worldRot.x));
+    dir.y = sin(glm::radians(worldRot.x));
+    dir.z = sin(glm::radians(worldRot.y)) * cos(glm::radians(worldRot.x));
 
     forward = glm::normalize(dir);
     right = glm::normalize(glm::cross(glm::normalize(dir), glm::vec3(0.0f, 1.0f, 0.0f)));

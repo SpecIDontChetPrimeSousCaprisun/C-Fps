@@ -4,7 +4,7 @@
 
 #include "Node.hpp"
 
-class Model : Node {
+class Model : public Node {
 public:
     Model(std::string path);
 };

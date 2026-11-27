@@ -18,7 +18,7 @@ public:
     static int height;
     static int width;
     static Node* parent;
-    static Camera camera;
+    static Camera* camera;
     static DirLight dirLight;
 private:
     static void frameBufferSizeCallback(GLFWwindow*, int newWidth, int newHeight);
