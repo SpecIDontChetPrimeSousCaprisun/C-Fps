@@ -1,4 +1,5 @@
 #include "Node.hpp"
+#include "Window.hpp"
 
 Node::Node() : parent(nullptr) {}
 
@@ -58,3 +59,39 @@ void Node::drawChildren() {
 
 void Node::update() {}
 void Node::draw() {}
+
+glm::vec3 Node::getWorldPosition() {
+    return worldPosition;
+}
+
+glm::vec3 Node::getWorldRotation() {
+    return worldRotation;
+}
+
+void Node::preUpdate() {
+    applyVelocities();
+    updateWorldCoordinates();
+}
+
+void Node::applyVelocities() {
+    position += linearVelocity * (float)Window::dt;
+    rotation += angularVelocity * (float)Window::dt;
+}
+
+void Node::updateWorldCoordinates() {
+    if (!parent) { 
+	worldPosition = position;
+	worldRotation = rotation;
+
+	return;
+    }
+
+    worldPosition = position + parent->getWorldPosition();
+    worldRotation = rotation + parent->getWorldRotation();
+}
+
+void Node::setWorldPosition(glm::vec3 pos) {
+    glm::vec3 offset = pos - parent->getWorldPosition();
+
+    position += offset;
+}

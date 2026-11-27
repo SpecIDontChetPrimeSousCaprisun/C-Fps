@@ -73,13 +73,13 @@ void Mesh::sendMatrix() {
 	glm::vec3(0.0f, 1.0f, 0.0f)
     );
 
-    /*glm::vec3 worldRotation = getWorldRotation();
+    glm::vec3 worldRotation = getWorldRotation();
 
     model = glm::translate(model, getWorldPosition());
     model = glm::rotate(model, glm::radians(worldRotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, glm::radians(worldRotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(worldRotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    model = glm::scale(model, size);*/
+    model = glm::scale(model, size);
 
     glm::mat4 projection = glm::perspective(
 	glm::radians(70.0f),
