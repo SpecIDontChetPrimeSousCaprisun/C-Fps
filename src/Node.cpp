@@ -19,15 +19,15 @@ std::vector<Node*> Node::getChildren() {
     return children;
 }
 
-void Node::setParent(Node* parent) {
+void Node::setParent(Node* newParent) {
     unparent();
-    this->parent = parent;
+    parent = newParent;
     parent->children.push_back(this);
 }
 
 void Node::unparent() {
-    if (!this->parent) return;
-    for (auto it = parent->children.begin(); it != this->parent->children.end(); ) {
+    if (!parent) return;
+    for (auto it = parent->children.begin(); it != parent->children.end(); ) {
 	if (*it == this) {
 	    it = parent->children.erase(it);
 	    break;

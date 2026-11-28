@@ -10,11 +10,11 @@ void Mesh::init() {
 }
 
 Mesh::Mesh(
-    Node* parent,
+    Node* model,
     std::vector<Vertex> vertices,
     std::vector<unsigned int> indices,
     std::string texPath
-) : Node(parent), indices(indices), vertices(vertices) {
+) : Node(model), indices(indices), vertices(vertices) {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -43,7 +43,7 @@ Mesh::Mesh(
     material.diffuse.gen(texPath);
     material.specular.gen(texPath);
 
-    setParent(Window::parent);
+    setParent(model);
 }
 
 void Mesh::update() {
